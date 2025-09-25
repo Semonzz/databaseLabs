@@ -1,4 +1,5 @@
 
+
 # Database Labs
 
 Database Labs in YarSU, Semenov Evgeniy, PMI-32, Lab number 13.
@@ -75,3 +76,19 @@ CREATE TABLE Lawyer_Specialization (
     PRIMARY KEY (lawyer_id, specialization_id)
 );
 ```
+### Lawyer table:
+![lawyer](/2/lawyer.png)
+### Client table:
+![lawyer](/2/client.png)
+### Case table:
+![lawyer](/2/case.png)
+### Specialization table:
+![lawyer](/2/specialization.png)
+### Casetype table:
+![lawyer](/2/casetype.png)
+### Lawyer_case table:
+![lawyer](/2/lawyer_case.png)
+### Lawyer_client table:
+![lawyer](/2/lawyer_client.png)
+### Lawyer_specialization table:
+![lawyer](/2/lawyer_specialization.png)
