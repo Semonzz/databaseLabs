@@ -11,7 +11,7 @@ Database Labs in YarSU, Semenov Evgeniy, PMI-32, Lab number 13.
 ![REL-model](https://github.com/Semonzz/databaseLabs/blob/main/1/2_1.png)
 
 
-## Lab 2
+## Lab 2 (PGSQL)
 ### SQL create tables:
 ```
 CREATE TABLE Specialization (
