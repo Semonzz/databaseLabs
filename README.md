@@ -79,16 +79,18 @@ CREATE TABLE Lawyer_Specialization (
 ### Lawyer table:
 ![lawyer](/2/lawyer.png)
 ### Client table:
-![lawyer](/2/client.png)
+![client](/2/client.png)
 ### Case table:
-![lawyer](/2/case.png)
+![case](/2/case.png)
 ### Specialization table:
-![lawyer](/2/specialization.png)
+![spec](/2/specialization.png)
 ### Casetype table:
-![lawyer](/2/casetype.png)
+![casetype](/2/casetype.png)
 ### Lawyer_case table:
-![lawyer](/2/lawyer_case.png)
+![l-case](/2/lawyer_case.png)
 ### Lawyer_client table:
-![lawyer](/2/lawyer_client.png)
+![l-client](/2/lawyer_client.png)
 ### Lawyer_specialization table:
-![lawyer](/2/lawyer_specialization.png)
+![L-s](/2/lawyer_specialization.png)
+### Diagram
+![Diagram](/2/diagram.png)
