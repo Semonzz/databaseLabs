@@ -38,7 +38,7 @@ CREATE TABLE Lawyer (
 CREATE TABLE Client (
     id SERIAL PRIMARY KEY,
     full_name VARCHAR(50) NOT NULL,
-    passport_data VARCHAR(20),
+    passport_data VARCHAR(20) NOT NULL UNIQUE,
     address VARCHAR(200)
 );
 
@@ -56,23 +56,23 @@ CREATE TABLE "Case" (
 
 
 CREATE TABLE Lawyer_Client (
-    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE CASCADE,
-    client_id INTEGER REFERENCES Client(id) ON DELETE CASCADE,
+    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE RESTRICT,
+    client_id INTEGER REFERENCES Client(id) ON DELETE RESTRICT,
     hire_date DATE NOT NULL,
     PRIMARY KEY (lawyer_id, client_id)
 );
 
 
 CREATE TABLE Lawyer_Case (
-    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE CASCADE,
-    case_id INTEGER REFERENCES "Case"(id) ON DELETE CASCADE,
+    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE RESTRICT,
+    case_id INTEGER REFERENCES "Case"(id) ON DELETE RESTRICT,
     PRIMARY KEY (lawyer_id, case_id)
 );
 
 
 CREATE TABLE Lawyer_Specialization (
-    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE CASCADE,
-    specialization_id INTEGER REFERENCES Specialization(id) ON DELETE CASCADE,
+    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE RESTRICT,
+    specialization_id INTEGER REFERENCES Specialization(id) ON DELETE RESTRICT,
     PRIMARY KEY (lawyer_id, specialization_id)
 );
 ```
