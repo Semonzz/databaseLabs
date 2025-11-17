@@ -1,5 +1,6 @@
 
 
+
 # Database Labs
 
 Database Labs in YarSU, Semenov Evgeniy, PMI-32, Lab number 13.
@@ -95,3 +96,6 @@ CREATE TABLE Lawyer_Specialization (
 ![L-s](/2/lawyer_specialization.png)
 ### Diagram
 ![Diagram](/2/diagram.png)
+
+## Lab 3 (PGSQL)
+[Part 1](/3/Семенов_ПМИ32.docx)

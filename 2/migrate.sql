@@ -22,7 +22,9 @@ VALUES
     ('Kevin Thompson', '3344556677', '707 Willow Way, OH'),
     ('Julia Clark', '8899001122', '808 Rose Blvd, WA'),
     ('Daniel Hall', '2233445566', '909 Lily Lane, AZ'),
-    ('Rachel Young', '7788990011', '1010 Sunnyside Ave, OR');
+    ('Rachel Young', '7788990011', '1010 Sunnyside Ave, OR'),
+	('Mark Novikov', '9911223344', '777 Elm St, NY'),
+	('Anna Sergeeva', '8822334455', '888 Oak Ave, LA');
 
 INSERT INTO CaseType (name)
 VALUES
@@ -59,7 +61,8 @@ VALUES
     ('2022-07-03', '2023-02-15', 0, 0, 25000, 4, 7),
     ('2022-08-15', '2023-03-20', 12, 9, 50000, 3, 8),
     ('2022-09-28', '2023-04-12', 0, 0, 0, 5, 9),
-    ('2022-10-10', '2023-05-05', 4, 2, 10000, 1, 10);
+    ('2022-10-10', '2023-05-05', 4, 2, 10000, 1, 10),
+	('2024-01-10', '2024-03-01', 0, 0, 0, 2, 12);
 
 INSERT INTO Specialization (name)
 VALUES

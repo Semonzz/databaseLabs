@@ -258,3 +258,54 @@ SELECT l.full_name
 FROM Lawyer l
 JOIN Lawyer_Case lc ON l.id = lc.lawyer_id
 ORDER BY full_name;
+
+-- 6.1
+SELECT
+    cl.full_name AS client,
+    COUNT(c.id) AS total_cases,
+    CASE
+        WHEN COUNT(c.id) = 0 THEN 'No cases'
+        WHEN COUNT(c.id) = 1 THEN 'Single-case'
+        WHEN COUNT(c.id) >= 4 THEN 'VIP'
+        WHEN COUNT(c.id) = 2 THEN 'Standard'
+        ELSE 'Active'
+    END AS client_category
+FROM Client cl
+LEFT JOIN "Case" c ON cl.id = c.client_id
+GROUP BY cl.id, cl.full_name
+ORDER BY total_cases DESC, cl.full_name;
+
+SELECT
+    c.id AS case_id,
+    ct.name AS case_type,
+    c.fine_amount,
+    c.max_sentence,
+    CASE
+        WHEN c.fine_amount >= 50000 OR c.max_sentence >= 10 THEN 'Severe'
+        WHEN c.fine_amount >= 10000 OR c.max_sentence >= 3 THEN 'Moderate'
+        ELSE 'Minor'
+    END AS case_severity
+FROM "Case" c
+JOIN CaseType ct ON c.case_type_id = ct.id
+ORDER BY 
+    CASE
+        WHEN c.fine_amount >= 50000 OR c.max_sentence >= 10 THEN 1
+        WHEN c.fine_amount >= 10000 OR c.max_sentence >= 3 THEN 2
+        ELSE 3
+    END,
+    c.fine_amount DESC;
+
+-- 6.2
+SELECT
+    EXTRACT(YEAR FROM c.end_date) AS year,
+    COUNT(CASE WHEN ct.name = 'Robbery' THEN 1 END) AS robbery,
+    COUNT(CASE WHEN ct.name = 'Divorce' THEN 1 END) AS divorce,
+    COUNT(CASE WHEN ct.name = 'Contract Dispute' THEN 1 END) AS contract_dispute,
+    COUNT(CASE WHEN ct.name = 'Bankruptcy Proceedings' THEN 1 END) AS bankruptcy
+FROM "Case" c
+JOIN CaseType ct ON c.case_type_id = ct.id
+WHERE c.end_date IS NOT NULL
+  AND EXTRACT(YEAR FROM c.end_date) IN (2022, 2023)
+GROUP BY EXTRACT(YEAR FROM c.end_date)
+ORDER BY year;
+
