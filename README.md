@@ -31,7 +31,8 @@ CREATE TABLE Lawyer (
     phone VARCHAR(15),
     address VARCHAR(200),
     start_date DATE NOT NULL,
-    qualification REAL CHECK (qualification >= 0)
+    qualification REAL CHECK (qualification >= 0),
+    is_active BOOLEAN DEFAULT true
 );
 
 
@@ -50,7 +51,7 @@ CREATE TABLE "Case" (
     max_sentence INT CHECK (max_sentence >= 0),
     actual_sentence INT CHECK (actual_sentence >= 0),
     fine_amount INT CHECK (fine_amount >= 0),
-    case_type_id INTEGER REFERENCES CaseType(id) ON DELETE SET NULL,
+    case_type_id INTEGER REFERENCES CaseType(id) ON DELETE RESTRICT,
     client_id INTEGER NOT NULL REFERENCES Client(id) ON DELETE RESTRICT
 );
 
@@ -71,7 +72,7 @@ CREATE TABLE Lawyer_Case (
 
 
 CREATE TABLE Lawyer_Specialization (
-    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE RESTRICT,
+    lawyer_id INTEGER REFERENCES Lawyer(id) ON DELETE CASCADE,
     specialization_id INTEGER REFERENCES Specialization(id) ON DELETE RESTRICT,
     PRIMARY KEY (lawyer_id, specialization_id)
 );
