@@ -1,3 +1,6 @@
+TRUNCATE TABLE Lawyer_Case, Lawyer_Specialization, Lawyer_Client, "Case", Client, Lawyer, CaseType, Specialization
+RESTART IDENTITY CASCADE;
+
 INSERT INTO Lawyer (full_name, phone, address, start_date, qualification, is_active)
 VALUES
     ('John Smith', '+1234567890', '123 Main St, NY', '2015-03-15', 8.5, true),
@@ -23,8 +26,10 @@ VALUES
     ('Julia Clark', '8899001122', '808 Rose Blvd, WA'),
     ('Daniel Hall', '2233445566', '909 Lily Lane, AZ'),
     ('Rachel Young', '7788990011', '1010 Sunnyside Ave, OR'),
-	('Mark Novikov', '9911223344', '777 Elm St, NY'),
-	('Anna Sergeeva', '8822334455', '888 Oak Ave, LA');
+    ('Mark Novikov', '9911223344', '777 Elm St, NY'),
+    ('Anna Sergeeva', '8822334455', '888 Oak Ave, LA'),
+    ('Ivan Petrov', '1122334499', '555 Spruce St, NY'),
+    ('Oleg Volkov', '9988776644', '444 Fir St, NY');
 
 INSERT INTO CaseType (name)
 VALUES
@@ -62,7 +67,13 @@ VALUES
     ('2022-08-15', '2023-03-20', 12, 9, 50000, 3, 8),
     ('2022-09-28', '2023-04-12', 0, 0, 0, 5, 9),
     ('2022-10-10', '2023-05-05', 4, 2, 10000, 1, 10),
-	('2024-01-10', '2024-03-01', 0, 0, 0, 2, 12);
+    ('2024-01-10', '2024-03-01', 0, 0, 0, 2, 12),
+    ('2025-10-01', NULL, 4, 0, 15000, 1, 13),
+    ('2022-08-01', '2023-03-16', 5, 2, 12000, 1, 14),
+    ('2024-05-01', '2024-10-20', 8, 0, 0, 6, 11),
+    ('2024-06-01', '2024-09-15', 0, 0, 500, 5, 12),
+    ('2024-07-01', '2024-11-01', 0, 0, 20000, 3, 3),
+    ('2024-08-01', '2024-10-01', 0, 0, 100, 5, 5);
 
 INSERT INTO Specialization (name)
 VALUES
@@ -90,7 +101,13 @@ VALUES
     (4, 8),
     (5, 9),
     (5, 10),
-    (9, 8);
+    (9, 8),
+    (1, 22),
+    (1, 23),
+    (2, 24),
+    (7, 25),
+	(2, 26),
+	(6, 27);
 
 INSERT INTO Lawyer_Client (lawyer_id, client_id, hire_date)
 VALUES
