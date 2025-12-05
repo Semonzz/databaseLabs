@@ -100,3 +100,9 @@ CREATE TABLE Lawyer_Specialization (
 ## Lab 3 (PGSQL)
 [Part 1](/3/Семенов_ПМИ32.docx)
 [Part 2](/3/Семенов_ПМИ32_2.docx)
+
+## Lab 4 (PGSQL)
+In progress......
+
+## Lab 5 (PGSQL)
+[SCRIPT](/5/script.sql)
