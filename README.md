@@ -10,7 +10,7 @@ Database Labs in YarSU, Semenov Evgeniy, PMI-32, Lab number 13.
   <a href="#lab-2-pgsql"><img alt="lab2" src="https://img.shields.io/badge/Lab2-g"></a>
   <a href="#lab-3-pgsql"><img alt="lab3" src="https://img.shields.io/badge/Lab3-g"></a>
   <a href="#lab-4-pgsql"><img alt="lab4" src="https://img.shields.io/badge/Lab4-g"></a>
-  <a href="#lab-5-pgsql"><img alt="lab6" src="https://img.shields.io/badge/Lab6-g"></a>
+  <a href="#lab-5-pgsql"><img alt="lab6" src="https://img.shields.io/badge/Lab5-g"></a>
 </p>
 
 ## Lab 1
