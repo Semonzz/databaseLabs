@@ -404,9 +404,12 @@ EXECUTE FUNCTION handle_lawyer_delete();
 
 DELETE FROM Lawyer WHERE id = 2;
 ```
-BEFORE TRIGGER C:
+BEFORE TRIGGER c:
+
 ![trig-c-1](/4/trig-c-1.png)
-AFTER TRIGGER C:
+
+AFTER TRIGGER c:
+
 ![trig-c-2](/4/trig-c-2.png)
 
 ## Lab 5 (PGSQL)
