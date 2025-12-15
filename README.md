@@ -426,7 +426,7 @@ AFTER TRIGGER c:
 
 
 ## Lab 6 (PGSQL (AGE))
-### Так как в PGSQL нет встроенной логики графов использовал extension AGE
+### Так как в PGSQL нет встроенной логики графов использовал extension Apache AGE
 ![graph](/6/graph.png)
 ### SQL create
 ```
