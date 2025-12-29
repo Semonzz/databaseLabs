@@ -884,7 +884,7 @@ COMMIT;
 SELECT id, full_name FROM Lawyer WHERE id IN (5, 10);
 ```
 ### Задание 2
-[Part 2](/7/2.docx)
+[Отчёт](/7/2.docx)
 
 Скрипт задания 2
 ```
