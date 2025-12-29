@@ -12,6 +12,7 @@ Database Labs in YarSU, Semenov Evgeniy, PMI-32, Lab number 13.
   <a href="#lab-4-pgsql"><img alt="lab4" src="https://img.shields.io/badge/Lab4-g"></a>
   <a href="#lab-5-pgsql"><img alt="lab5" src="https://img.shields.io/badge/Lab5-g"></a>
   <a href="#lab-6-pgsql-age"><img alt="lab6" src="https://img.shields.io/badge/Lab6-g"></a>
+  <a href="#lab-7-pgsql"><img alt="lab5" src="https://img.shields.io/badge/Lab7-g"></a>
 </p>
 
 ## Lab 1
@@ -842,3 +843,155 @@ WHERE (cnt)::text::int > (
 Новый вывод:
 
 ![e-new](/6/e-new.png)
+
+
+## Lab 7 (PGSQL)
+### Задание 1
+[Отчёт](/7/Лабораторная работа №7 Семенов Евгений ПМИ-32.docx)
+
+Скрипт адания 1
+```
+SELECT * FROM Lawyer;
+
+BEGIN;
+
+-- Удалим юриста Susan Harris (id=10)
+DELETE FROM Lawyer WHERE id = 10;
+SELECT * FROM Lawyer WHERE id = 10;
+
+-- ОТКАТ: данные восстановятся
+ROLLBACK;
+
+SELECT * FROM Lawyer WHERE id = 10;
+
+-- Новая транзакция с точкой сохранения
+BEGIN;
+
+DELETE FROM Lawyer WHERE id = 10;
+SELECT * FROM Lawyer WHERE id = 10;
+
+SAVEPOINT sp1;
+
+-- Удалим ещё одного юриста
+DELETE FROM Lawyer WHERE id = 5;
+SELECT id, full_name FROM Lawyer WHERE id IN (5, 10);
+
+-- Откатимся к точке
+ROLLBACK TO SAVEPOINT sp1;
+SELECT * FROM Lawyer WHERE id IN (5, 10);
+
+-- Откатимся полностью и зафиксируем
+ROLLBACK;
+SELECT * FROM Lawyer WHERE id IN (5, 10);
+
+COMMIT;
+
+-- Итог: оба юриста на месте
+SELECT id, full_name FROM Lawyer WHERE id IN (5, 10);
+```
+### Задание 2
+[Part 2](/7/Лабораторная работа №7 Задание 2 Семенов Евгений ПМИ-32.docx)
+
+Скрипт задания 2
+```
+-- Cценарий 1
+SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+-- А
+BEGIN;
+SELECT qualification FROM Lawyer WHERE id = 7;
+UPDATE Lawyer SET qualification = 10.0 WHERE id = 7;
+
+-- В
+BEGIN;
+SELECT qualification FROM Lawyer WHERE id = 7;
+UPDATE Lawyer SET qualification = 8.0 WHERE id = 7;
+
+-- А
+COMMIT;
+SELECT qualification FROM Lawyer WHERE id = 7;
+
+-- B
+COMMIT;
+
+-- A
+SELECT qualification FROM Lawyer WHERE id = 7;
+
+
+-- Cценарий 2
+-- A
+BEGIN;
+UPDATE Lawyer SET full_name = 'TEST TESTOV' WHERE id = 7;
+
+-- B
+SELECT full_name FROM Lawyer WHERE id = 7;
+
+-- A
+ROLLBACK;
+
+-- Сценарий 3
+SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL READ COMMITTED;
+
+-- Сценарий 4
+
+-- А
+BEGIN;
+SELECT qualification FROM Lawyer WHERE id = 7;
+
+-- В
+BEGIN;
+UPDATE Lawyer SET qualification = 11.0 WHERE id = 7;
+COMMIT;
+
+-- А
+SELECT qualification FROM Lawyer WHERE id = 7;
+COMMIT;
+
+-- Сценарий 5
+SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+-- А
+BEGIN;
+SELECT qualification FROM Lawyer WHERE id = 7;
+
+-- В
+BEGIN;
+UPDATE Lawyer SET qualification = 12.0 WHERE id = 7;
+COMMIT;
+
+-- А
+SELECT qualification FROM Lawyer WHERE id = 7;
+COMMIT;
+
+-- Сценарий 6
+
+-- А 
+BEGIN;
+SELECT * FROM Lawyer WHERE qualification >= 9.0;
+
+-- В
+BEGIN;
+INSERT INTO Lawyer (full_name, phone, address, start_date, qualification)
+VALUES ('TEST TESTOVICH', '+1111111111', 'MOSCOW', '2025-01-01', 9.2);
+COMMIT;
+
+-- А
+SELECT * FROM Lawyer WHERE qualification >= 9.0;
+COMMIT;
+
+-- Сценарий 7
+SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+-- А 
+BEGIN;
+SELECT * FROM Lawyer WHERE qualification >= 9.0;
+
+-- В
+BEGIN;
+INSERT INTO Lawyer (full_name, phone, address, start_date, qualification)
+VALUES ('TEST TESTOVICH2', '+1111111111', 'MOSCOW', '2025-01-01', 9.2);
+COMMIT;
+
+-- А
+SELECT * FROM Lawyer WHERE qualification >= 9.0;
+COMMIT;
+```
