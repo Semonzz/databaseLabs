@@ -13,6 +13,7 @@ Database Labs in YarSU, Semenov Evgeniy, PMI-32, Lab number 13.
   <a href="#lab-5-pgsql"><img alt="lab5" src="https://img.shields.io/badge/Lab5-g"></a>
   <a href="#lab-6-pgsql-age"><img alt="lab6" src="https://img.shields.io/badge/Lab6-g"></a>
   <a href="#lab-7-pgsql"><img alt="lab5" src="https://img.shields.io/badge/Lab7-g"></a>
+  <a href="#lab-8-mongodb"><img alt="lab5" src="https://img.shields.io/badge/Lab8-g"></a>
 </p>
 
 ## Lab 1
@@ -989,3 +990,7 @@ COMMIT;
 SELECT * FROM Lawyer WHERE qualification >= 9.0;
 COMMIT;
 ```
+
+## Lab 8 (MongoDB)
+
+[Отчёт](/8/1.docx)
